@@ -1,40 +1,40 @@
 <script setup>
 import SiteHeader from './components/SiteHeader.vue';
-import HelloWorld from './components/HelloWorld.vue';
+import SiteMain from './components/SiteMain.vue';
 </script>
 
 <template>
   <div id="app">
     <SiteHeader />
-    <div class="content">
-      <HelloWorld msg="Bem-vindo ao Meu Site!" />
-    </div>
+    <SiteMain />
   </div>
 </template>
 
-<style scoped>
+<style>
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.content {
-  margin-top: 80px;
-  padding: 1rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  width: 100%;
+  background-color: black;
+  margin: 0; 
+  padding: 0; 
 }
 
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
 }
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
 </style>
