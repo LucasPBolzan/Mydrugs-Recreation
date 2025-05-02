@@ -6,15 +6,15 @@
     <div class="header-container">
       <nav>
         <div class="nav-left">
-          <a href="#">SHOP</a>
-          <a href="#">FAQ</a>
+          <router-link to="/shop">SHOP</router-link>
+          <router-link to="/faq">FAQ</router-link>
         </div>
-        <a href="/" class="logo">
+        <router-link to="/" class="logo">
           <img src="@/assets/logo.png" alt="Logo" />
-        </a>
+        </router-link>
         <div class="nav-right">
-          <a href="#">SAFETY</a>
-          <a href="#">CONTACT</a>
+          <router-link to="/safety">SAFETY</router-link>
+          <router-link to="/contact">CONTACT</router-link>
         </div>
       </nav>
     </div>

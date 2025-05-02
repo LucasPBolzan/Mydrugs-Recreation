@@ -1,12 +1,11 @@
 <script setup>
 import SiteHeader from './components/SiteHeader.vue';
-import SiteMain from './components/SiteMain.vue';
 </script>
 
 <template>
   <div id="app">
     <SiteHeader />
-    <SiteMain />
+    <router-view />
   </div>
 </template>
 
@@ -17,8 +16,8 @@ import SiteMain from './components/SiteMain.vue';
   min-height: 100vh;
   width: 100%;
   background-color: black;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -35,6 +34,4 @@ html {
   height: 100%;
   width: 100%;
 }
-
-
 </style>
