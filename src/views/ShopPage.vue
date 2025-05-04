@@ -64,6 +64,7 @@
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
+
 }
 
 .product-card {
@@ -73,6 +74,7 @@
   padding: 20px;
   text-align: center;
   width: 200px;
+  border: 1px solid white;
 }
 
 .product-image {
