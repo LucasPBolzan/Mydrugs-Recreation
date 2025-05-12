@@ -1,4 +1,11 @@
 <script setup>
+import { defineEmits } from 'vue';
+
+const emit = defineEmits(['update-cart']);
+
+const addToCart = () => {
+  emit('update-cart');
+};
 </script>
 
 <template>
@@ -10,7 +17,7 @@
         <h2>Purple Flower</h2>
         <p>70mg of MDMA per pill</p>
         <p>0.0021 BTC | 0.0802 ETH</p>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
       </div>
 
       <div class="product-card">
@@ -18,7 +25,7 @@
         <h2>Green Snowflake</h2>
         <p>150mg of MDMA per pill</p>
         <p>0.0045 BTC | 0.1667 ETH</p>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
       </div>
 
       <div class="product-card">
@@ -26,7 +33,7 @@
         <h2>Blue Clover</h2>
         <p>100mg of MDMA per pill</p>
         <p>0.0029 BTC | 0.114 ETH</p>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
       </div>
 
       <div class="product-card">
@@ -34,7 +41,7 @@
         <h2>Red Pill</h2>
         <p>90mg of MDMA per pill</p>
         <p>0.013 BTC | 0.23 ETH</p>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -64,7 +71,6 @@
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-
 }
 
 .product-card {

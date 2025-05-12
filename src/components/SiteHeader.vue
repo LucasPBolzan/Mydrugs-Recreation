@@ -1,4 +1,6 @@
 <script setup>
+import { defineProps } from 'vue';
+const props = defineProps(['cartCount']);
 </script>
 
 <template>
@@ -15,6 +17,10 @@
         <div class="nav-right">
           <router-link to="/safety">SAFETY</router-link>
           <router-link to="/contact">CONTACT</router-link>
+          <div class="cart-container">
+            <img src="@/assets/carrinho_sem_fundo.png" alt="Carrinho" class="cart-image" />
+            <span class="cart-count">{{ props.cartCount }}</span>
+          </div>
         </div>
       </nav>
     </div>
@@ -57,5 +63,27 @@ nav a {
   height: 100px;
   width: auto;
   display: block;
+}
+
+.cart-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-image {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.cart-count {
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

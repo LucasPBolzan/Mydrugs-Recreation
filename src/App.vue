@@ -1,11 +1,20 @@
 <script setup>
+import { ref } from 'vue';
 import SiteHeader from './components/SiteHeader.vue';
+
+const cartCount = ref(0); 
+
+
+const updateCart = () => {
+  cartCount.value += 1; 
+};
+
 </script>
 
 <template>
   <div id="app">
-    <SiteHeader />
-    <router-view />
+    <SiteHeader :cart-count="cartCount" />
+    <router-view @update-cart="updateCart" />
   </div>
 </template>
 

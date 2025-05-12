@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import slide1 from '@/assets/slides/Slide_Blue_Pill.cd5977bb.jpg';
 import slide2 from '@/assets/slides/Slide_Green_Pill.63990feb.jpg';
 import slide3 from '@/assets/slides/Slide_Purple_Pill.973957e6.jpg';
-import slide4 from '@/assets/slides/Slide_Red_Pill.52b9c112.jpg';
+import slide4 from '@/assets/slides/Slide_Red_Pill.52b9c112.jpg'; 
 
 const images = ref([slide1, slide2, slide3, slide4]);
 const currentIndex = ref(0);
