@@ -1,8 +1,44 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import { defineEmits } from 'vue';
 
+// Evento para comunicar com o componente pai
 const emit = defineEmits(['update-cart']);
 
+// Lista reativa de produtos
+const products = ref([]);
+
+// Função para buscar os produtos da API
+const fetchProducts = async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json();
+
+    // Mapear imagens locais com base no ID
+    const imageMap = {
+      1: new URL('@/assets/slides/Slide_Purple_Pill.973957e6.jpg', import.meta.url).href,
+      2: new URL('@/assets/slides/Slide_Green_Pill.63990feb.jpg', import.meta.url).href,
+      3: new URL('@/assets/slides/Slide_Blue_Pill.cd5977bb.jpg', import.meta.url).href,
+      4: new URL('@/assets/slides/Slide_Red_Pill.52b9c112.jpg', import.meta.url).href
+    };
+
+    // Pegar apenas os 4 primeiros e formatar os dados
+    products.value = data.slice(0, 4).map(post => ({
+      id: post.id,
+      title: post.title.slice(0, 15),
+      description: post.body.slice(0, 30),
+      price: `0.00${post.id} BTC | 0.0${post.id * 2} ETH`,
+      image: imageMap[post.id] || 'https://via.placeholder.com/150'
+    }));
+  } catch (error) {
+    console.error('Erro ao buscar produtos:', error);
+  }
+};
+
+// Buscar produtos assim que o componente montar
+onMounted(fetchProducts);
+
+// Emitir evento ao clicar no botão
 const addToCart = () => {
   emit('update-cart');
 };
@@ -12,35 +48,11 @@ const addToCart = () => {
   <div class="shop-page">
     <h1 class="title">FEATURED PRODUCTS</h1>
     <div class="product-container">
-      <div class="product-card">
-        <img src="@/assets/slides/Slide_Purple_Pill.973957e6.jpg" alt="Purple Flower" class="product-image" />
-        <h2>Purple Flower</h2>
-        <p>70mg of MDMA per pill</p>
-        <p>0.0021 BTC | 0.0802 ETH</p>
-        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="@/assets/slides/Slide_Green_Pill.63990feb.jpg" alt="Green Snowflake" class="product-image" />
-        <h2>Green Snowflake</h2>
-        <p>150mg of MDMA per pill</p>
-        <p>0.0045 BTC | 0.1667 ETH</p>
-        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="@/assets/slides/Slide_Blue_Pill.cd5977bb.jpg" alt="Blue Clover" class="product-image" />
-        <h2>Blue Clover</h2>
-        <p>100mg of MDMA per pill</p>
-        <p>0.0029 BTC | 0.114 ETH</p>
-        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="@/assets/slides/Slide_Red_Pill.52b9c112.jpg" alt="Red Pill" class="product-image" />
-        <h2>Red Pill</h2>
-        <p>90mg of MDMA per pill</p>
-        <p>0.013 BTC | 0.23 ETH</p>
+      <div v-for="product in products" :key="product.id" class="product-card">
+        <img :src="product.image" :alt="product.title" class="product-image" />
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
         <button class="add-to-cart" @click="addToCart">Add to Cart</button>
       </div>
     </div>
@@ -75,12 +87,11 @@ const addToCart = () => {
 
 .product-card {
   background-color: #1a1a1a;
-  border: 1px solid #333;
+  border: 1px solid white;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
   width: 200px;
-  border: 1px solid white;
 }
 
 .product-image {
