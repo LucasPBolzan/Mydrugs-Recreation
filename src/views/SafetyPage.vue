@@ -26,7 +26,7 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   color: #fff;
-  background-color: #121212;
+  background-color: black;
   min-height: 100vh;
   margin-top: 100px;
 }

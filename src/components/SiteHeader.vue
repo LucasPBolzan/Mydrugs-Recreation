@@ -17,10 +17,10 @@ const props = defineProps(['cartCount']);
         <div class="nav-right">
           <router-link to="/safety">SAFETY</router-link>
           <router-link to="/contact">CONTACT</router-link>
-          <div class="cart-container">
-            <img src="@/assets/carrinho_sem_fundo.png" alt="Carrinho" class="cart-image" />
-            <span class="cart-count">{{ props.cartCount }}</span>
-          </div>
+        </div>
+        <div class="cart-container">
+          <img src="@/assets/carrinho_sem_fundo.png" alt="Carrinho" class="cart-image" />
+          <span class="cart-count">{{ props.cartCount }}</span>
         </div>
       </nav>
     </div>
@@ -43,6 +43,7 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 100px;
+  position: relative; 
 }
 
 .nav-left,
@@ -66,7 +67,10 @@ nav a {
 }
 
 .cart-container {
-  position: relative;
+  position: absolute; 
+  right: 50px; 
+  top: 50%; 
+  transform: translateY(-50%); 
   display: flex;
   flex-direction: column;
   align-items: center;
